@@ -1,0 +1,223 @@
+Q1)CREATE DATABASE Edulab;
+CREATE TABLE Employee (
+    ID int,
+    Name varchar(80),
+    Address varchar(255),
+    );
+INSERT INTO Employee(ID,Name,Address)
+VALUES (02, 'Shivram', 'CST');
+INSERT INTO Employee(ID,Name,Address)
+VALUES (03, 'Shiva', 'Andheri');
+SELECT * FROM Employee;
+UPDATE Employee
+ SET ID = 01, 
+ WHERE ID=02;
+DELETE FROM Employee WHERE Name='Shiva';
+
+Q2)a=int(input('Enter Number One: '))
+b=int(input('Enter Number Two: '))
+sum1=0
+sum2=0
+for i in range(1,a):
+    if a%i==0:
+        sum1+=i
+for j in range(1,b):
+    if b%j==0:
+        sum2+=j
+if(sum1==b and sum2==a):
+    print('Amicable!')
+else:
+    print('Not Amicable!')
+
+Q3)a)SELECT MAX(Age)
+FROM Employees;
+b)SELECT MIN(Age)
+FROM Employees;
+c)SELECT AVG(Price)
+FROM Products;
+d)SELECT COUNT(Quantity) AS QTT FROM Products;  
+e)SELECT SUM(Quantity)
+FROM Products;
+
+Q4)i)SELECT s.sname
+FROM sailors s, boats b, reserves r
+WHERE b.color='red' AND b.bid=r.bid AND s.sid = r.sid
+ii)SELECT DISTINCT s.sname 
+FROM sailors s, reserves r1, reserves r2 
+WHERE s.sid = r1.sid AND r1.sid = r2.sid AND r1.bid <> r2.bid
+iii)SELECT DISTINCT b.color
+ FROM boats b, reserves r, sailors s 
+WHERE s.sname = 'Mohan' AND s.sid = r.sid AND r.bid = b.bid;
+iv)SELECT s.sname
+FROM sailors s, reserves r, boats b 
+WHERE s.sid = r.sid AND r.bid = b.bid
+      AND (b.color = ‘red’ OR b.color = ‘green’)
+v)SELECT s.sname
+FROM sailors s, reserves r, boats b 
+WHERE b.color != 'red' and b.bid = r.bid and s.sid = r.sid and s.sid > 20
+
+Q5)#html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login and registration form </title>
+  
+    <link rel="stylesheet" href="style2.css">
+</head>
+<body>
+    <div class="loginpage">
+        <div class="form">
+            <form class="registration form">
+                <input type="text" placeholder="Username" required/>
+                <input type="email" placeholder="emailId" required/>
+                <input type="password" placeholder="Password" min="8" maxlength="11" />
+                <button>submit</button>
+
+            <p class="message">Already Registered <a href="#">/login</a></p>
+        </form>
+            <form class="login form">
+                <input type="text" placeholder="username" required/>
+                <input type="password" placeholder="Password"/ min="8" maxlength="11" >
+                <button>login</button>
+                <p class="message"> Not Registered?  <a href="#"> Register</a></p>
+           
+
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>
+
+#CSS
+body{
+    background-image: url('1.jpg');
+    height: 100px;
+    background-size:cover;
+    background-position: center;
+}
+.loginpage{
+    width: 360px;
+    padding: 10% 0 0;
+    margin: auto;
+}
+.form{
+    position: relative;
+   z-index: 1;
+    background: blue;
+    max-width: 360px;
+    margin: 0 auto 100px;
+    padding: 45px;
+    text-align: center;
+}
+.form input{
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    outline: 1;
+    background: floralwhite;
+    width: 100%;
+    border: 0 ;
+    margin: 0 0 15px;
+    padding: 15px;
+    box-sizing: border-box;
+    font-size: 15px;
+}
+.form button{
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    text-transform: uppercase;
+    outline: 0;
+    background: gray;
+    width: 100%;
+    border: 0;
+    color: yellow;
+    font-size: 15px;
+    cursor: pointer;
+}
+.form button:hover,.form button:active{
+    background: lightgray;
+    margin: 15px 0 0;
+    color: rgb(216, 3, 3);
+    font-size: 12px;
+}
+.form .message a{
+    color: red;
+    text-decoration: none;
+}
+.form .register-form{
+    display: none;
+}
+
+Q6)
+1)SELECT * FROM Employee;
+2)SELECT EMPNO,SALARY FROM Employee;
+3)SELECT AVG(SALARY) AS ASalary FROM Employee;
+4)SELECT COUNT(EMPNO) AS TOTAL FROM Employee;
+5)SELECT DISTINCT EMPNO FROM Employee;
+6)SELECT EMP_NAME, SUM(SALARY), COUNT(EMP_NAME)
+FROM  employees 
+WHERE EMP_NAME=EMP_NAME
+GROUP BY EMP_NAME;
+7)SELECT EMP_NAME
+FROM EMPLOYEES
+WHERE SALARY > (SELECT AVG(SALARY) FROM EMPLOYEES);
+8)SELECT EMP_NAME
+FROM Employee 
+ORDER BY EMP_NAME DESC;
+9)SELECT EMP_NAME
+FROM Employee
+WHERE EMP_NAME='AMIT' AND SALARY>50000;
+
+Q7)a = 'Malyalam'  
+b= a.casefold()  
+rev = reversed(a)  
+  
+if list(a) == list(rev):  
+   print("PALINDROME !")  
+else:  
+   print("NOT PALINDROME !")  
+
+Q8)#include <iostream>
+using namespace std;
+int main (){
+   int arr[] = { 7, 9, 5, 3, 1,4 ,2 };
+   int n = 7, sum = 0;
+   for(int i = 0; i<n ; i++)
+   {
+      sum+=arr[i];
+   }
+   cout<<"The Sum of array is: "<<sum;
+   return 0;
+}
+
+Q9)a)EQUI JOIN
+SELECT Employee.name, Employee.city,  Record.city
+FROM Employee
+JOIN Record
+ON Employee.city = Record.city;
+
+b)NON-EQUI JOIN
+SELECT Employee.name, Record.id
+FROM Employee, Record
+WHERE Employee.id < Record.id ;
+
+c)SELF JOIN
+SELECT  a.ID, b.NAME, a.SALARY
+FROM Employee a, Employee b
+WHERE a.SALARY < b.SALARY;
+
+d)FULL OUTER JOIN
+SELECT Employee.ID, Record.ID
+FROM Employee
+FULL OUTER JOIN Record ON Employee.ID=Record.ID
+
+
+
+
+
+
+
+
+
+
